@@ -22,7 +22,8 @@ use App\Filament\Resources\CategoryResource\Pages\ListCategories;
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
-
+    protected static ?string $navigationLabel = 'Categories';
+    protected static ?string $navigationGroup = 'Library Collection';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
