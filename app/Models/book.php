@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class book extends Model
+class Book extends Model
 {
     protected $fillable = [
         "title",
@@ -20,7 +20,7 @@ class book extends Model
         "category_id",
     ];
 
-    public function MediaFiles()
+    public function mediaFiles()
     {
         // return $this->hasMany();
     }
