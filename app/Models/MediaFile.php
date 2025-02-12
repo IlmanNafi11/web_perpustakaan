@@ -8,6 +8,7 @@ class MediaFile extends Model
 {
     /**
      * Daftar atribute yang dapat diisi melalui mass-assigment.
+     * 
      * @var array
      */
     protected $fillable = [
@@ -19,11 +20,11 @@ class MediaFile extends Model
 
     /**
      * Mendefinisikan relasi many to one dengan model Book.
-     * # Satu atau banyak media file terkait dengan satu data buku
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * Satu atau banyak media file terkait dengan satu data buku
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Book, MediaFile>
      */
-    public function book()
+    public function books()
     {
         return $this->belongsTo(Book::class);
     }

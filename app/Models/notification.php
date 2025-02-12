@@ -8,6 +8,7 @@ class Notification extends Model
 {
     /**
      * Daftar attribute yang dapat diisi melalui mass-assigment.
+     * 
      * @var array
      */
     protected $fillable = [
@@ -23,7 +24,7 @@ class Notification extends Model
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<User, Notification>
      */
-    public function user()
+    public function users()
     {
         return $this->belongsToMany(User::class, "user_notifications")->withPivot('is_deleted', 'is_read')->withTimestamps();
     }

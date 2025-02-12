@@ -11,6 +11,7 @@ class Book extends Model
 {
     /**
      * Daftar atribute yang dapat diisi melalui mass-assigment.
+     * 
      * @var array
      */
     protected $fillable = [
@@ -29,9 +30,9 @@ class Book extends Model
 
     /**
      * Mendefinisikan relasi one to many dengan model MediaFile.
-     * # Setiap buku memiliki banyak file media(cover dan file ebook)
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * Setiap buku memiliki banyak file media(cover dan file ebook)
+     * 
+     * @return HasMany<MediaFile, Book>
      */
     public function mediaFiles()
     {
@@ -40,11 +41,11 @@ class Book extends Model
 
     /**
      * Mendefinisikan relasi one to one dengan model Category
-     * # Setiap buku memiliki satu kategori terkait.
+     * Setiap buku memiliki satu kategori terkait.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Category, Book>
      */
-    public function category()
+    public function categories()
     {
         return $this->belongsTo(Category::class);
     }
