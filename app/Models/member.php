@@ -27,4 +27,15 @@ class Member extends Model
     {
         return $this->hasOne(BorrowRequest::class);
     }
+
+    /**
+     * Mendefinisikan relasi one to one dengan model User
+     * # Setiap member terkait dengan satu user
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, Member>
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
