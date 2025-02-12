@@ -51,11 +51,11 @@ class User extends Authenticatable
 
     /**
      * Mendefinisikan relasi one to one dengan model Member
-     * # Setiap user terkait dengan 0 atau 1 Member. 
+     * Setiap user terkait dengan 0 atau 1 Member. 
      * 
      * @return \Illuminate\Database\Eloquent\Relations\HasOne<Member, User>
      */
-    public function member()
+    public function members()
     {
         return $this->hasOne(Member::class);
     }
@@ -69,8 +69,19 @@ class User extends Authenticatable
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Notification, User>
      */
-    public function notification()
+    public function notifications()
     {
         return $this->belongsToMany(Notification::class, "user_notifications")->withPivot("is_deleted", "is_read")->withTimestamps();
+    }
+
+    /**
+     * Mendefinisikan relasi one to one dengan model RegistrationAttempt.
+     * Setiap users terkait dengan satu entry di registration attempts
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<RegistrationAttempt, User>
+     */
+    public function registrationAttempts()
+    {
+        return $this->hasOne(RegistrationAttempt::class);
     }
 }
