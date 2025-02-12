@@ -37,4 +37,16 @@ class Book extends Model
     {
         return $this->hasMany(MediaFile::class);
     }
+
+    /**
+     * Mendefinisikan relasi one to one dengan model Category
+     * # Setiap buku memiliki satu kategori terkait.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Category, Book>
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
 }
