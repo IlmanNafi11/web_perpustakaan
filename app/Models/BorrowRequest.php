@@ -8,6 +8,7 @@ class BorrowRequest extends Model
 {
     /**
      * Daftar atribute yang dapat diisi melalui mass-assigment.
+     * 
      * @var array
      */
     protected $fillable = [
@@ -21,12 +22,23 @@ class BorrowRequest extends Model
 
     /**
      * Mendefinisikan relasi one to one dengan model Member.
-     * # Setiap permintaan peminjaman terkait dengan satu member.
+     * Setiap permintaan peminjaman terkait dengan satu member.
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Member, BorrowRequest>
      */
-    public function member()
+    public function members()
     {
         return $this->belongsTo(Member::class);
+    }
+
+    /**
+     * Mendefinisikan relasi one to one dengan model BorrowRecord.
+     * Setiap permintaan peminjaman yang berhasil(approved) terkait dengan satu entry di model BorrowRecord.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<BorrowRecord, BorrowRequest>
+     */
+    public function borrowRecords()
+    {
+        return $this->hasOne(BorrowRecord::class);
     }
 }
