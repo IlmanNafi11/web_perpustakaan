@@ -26,26 +26,4 @@ class UserNotification extends Model
         "is_deleted",
         "is_read",
     ];
-
-    /**
-     * Mendefinisikan relasi one to one dengan model Users
-     * # Setiap entry terkait dengan satu users
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, UserNotification>
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Mendefinisikan relasi one to one dengan model Notification
-     * # Setiap entry terkait dengan satu notification
-     * 
-     * @return void
-     */
-    public function notification()
-    {
-        $this->belongsTo(Notification::class);
-    }
 }
