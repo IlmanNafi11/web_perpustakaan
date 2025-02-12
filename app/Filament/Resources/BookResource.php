@@ -23,6 +23,8 @@ class BookResource extends Resource
 {
     protected static ?string $model = Book::class;
 
+    protected static ?string $navigationLabel = 'Books and Ebooks';
+    protected static ?string $navigationGroup = 'Library Collection';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
