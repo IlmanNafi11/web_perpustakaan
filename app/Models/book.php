@@ -18,7 +18,7 @@ class Book extends Model
         "title",
         "author",
         "isbn",
-        "description",
+        "descriptions",
         "quantity",
         "available",
         "year",
@@ -45,7 +45,7 @@ class Book extends Model
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Category, Book>
      */
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }
