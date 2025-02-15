@@ -8,7 +8,7 @@ use App\Models\MediaFile;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\DB;
-
+use App\Utils\HooksResource;
 class CreateBook extends CreateRecord
 {
     protected static string $resource = BookResource::class;
@@ -20,13 +20,15 @@ class CreateBook extends CreateRecord
 
     protected function afterCreate(): void
     {
-        $cover = $this->data['cover'];
-        $pathCover = reset($cover);
-        DB::table('media_files')->insert([
-            'book_id' => $this->record->id,
-            'media_type' => 'cover image',
-            'file_path' => $pathCover,
-        ]);
+        $id = $this->record->id;
+        if (isset($this->data['cover'])) {
+            HooksResource::InsertPathFileToMediaFiles($this->data['cover'], $id, 'cover image');
+        }
+
+        if (isset($this->data['ebook'])) {
+            HooksResource::InsertPathFileToMediaFiles($this->data['ebook'], $id, 'ebook file');
+        }
+
     }
 
 }
