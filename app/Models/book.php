@@ -36,7 +36,7 @@ class Book extends Model
      */
     public function mediaFiles()
     {
-        return $this->hasMany(MediaFile::class);
+        return $this->hasMany(MediaFile::class, 'book_id') ;
     }
 
     /**
