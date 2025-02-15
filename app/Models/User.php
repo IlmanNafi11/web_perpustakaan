@@ -51,8 +51,8 @@ class User extends Authenticatable
 
     /**
      * Mendefinisikan relasi one to one dengan model Member
-     * Setiap user terkait dengan 0 atau 1 Member. 
-     * 
+     * Setiap user terkait dengan 0 atau 1 Member.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne<Member, User>
      */
     public function members()
@@ -63,10 +63,10 @@ class User extends Authenticatable
     /**
      * Mendefinisikan relasi many to many dengan model Notification.
      * Setiap User dapat terkait dengan satu atau banyak Notification, begitu sebaliknya.
-     * Note : 
-     * 1. user_notifications adalah nama table pivot 
+     * Note :
+     * 1. user_notifications adalah nama table pivot
      * 2. is_deleted dan is_read adalah attribute tambahan pada table pivot.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Notification, User>
      */
     public function notifications()
@@ -74,14 +74,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Notification::class, "user_notifications")->withPivot("is_deleted", "is_read")->withTimestamps();
     }
 
-    /**
-     * Mendefinisikan relasi one to one dengan model RegistrationAttempt.
-     * Setiap users terkait dengan satu entry di registration attempts
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne<RegistrationAttempt, User>
-     */
-    public function registrationAttempts()
-    {
-        return $this->hasOne(RegistrationAttempt::class);
-    }
 }
