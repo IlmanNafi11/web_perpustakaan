@@ -40,7 +40,7 @@ class Member extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<User, Member>
      */
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
