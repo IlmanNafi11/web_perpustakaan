@@ -68,16 +68,16 @@ class BookResource extends Resource
                 Select::make('language')
                     ->label('Language')
                     ->options([
-                        'Indonesia',
-                        'English',
-                        'Malaysia',
-                        'Arabic',
+                        'indonesia' => 'Indonesia',
+                        'english' =>'English',
+                        'malaysia' =>'Malaysia',
+                        'arabic' =>'Arabic',
                     ]),
                 Select::make('type')
                     ->label('Type')
                     ->options([
-                        "Physical Book",
-                        "E-Book",
+                        'phisical book' => "Physical Book",
+                        'ebook' => "E-Book",
                     ])
                     ->live(false, 500),
                 Select::make('category_id')
