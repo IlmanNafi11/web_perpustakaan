@@ -16,7 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class BorrowRecordResource extends Resource
 {
     protected static ?string $model = BorrowRecord::class;
-
+    protected static ?string $navigationLabel = 'Loan Record';
+    protected static ?string $label = 'Loan Records';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
