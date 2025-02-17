@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class BorrowRequest extends Model
 {
     use HasFactory;
-    
+
     /**
      * Daftar atribute yang dapat diisi melalui mass-assigment.
      *
@@ -20,6 +20,7 @@ class BorrowRequest extends Model
         "member_id",
         "status",
         "request_at",
+        "processed_at",
         "is_taken",
     ];
 
