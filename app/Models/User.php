@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Daftar attribute yang dapat diisi melalui mass-assigment.
      *
      * @var list<string>
      */
@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'phone',
+        'photo_path',
     ];
 
     /**
@@ -45,4 +48,30 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Mendefinisikan relasi one to one dengan model Member
+     * Setiap user terkait dengan 0 atau 1 Member.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne<Member, User>
+     */
+    public function members()
+    {
+        return $this->hasOne(Member::class);
+    }
+
+    /**
+     * Mendefinisikan relasi many to many dengan model Notification.
+     * Setiap User dapat terkait dengan satu atau banyak Notification, begitu sebaliknya.
+     * Note :
+     * 1. user_notifications adalah nama table pivot
+     * 2. is_deleted dan is_read adalah attribute tambahan pada table pivot.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<Notification, User>
+     */
+    public function notifications()
+    {
+        return $this->belongsToMany(Notification::class, "user_notifications")->withPivot("is_deleted", "is_read")->withTimestamps();
+    }
+
 }
